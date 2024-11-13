@@ -1,24 +1,24 @@
-// Mock user data
+// Prykadowe dane uzytkownika
 const user = {
     name: "John Doe",
     username: "john_doe",
     posts: [
-        { title: "Post 1", content: "This is the content of the first post." },
-        { title: "Post 2", content: "This is the content of the second post." },
-        // Add more posts as needed
-    ],
+        { title: "Post 1", content: "To jest tresc pierwszego posta." },
+        { title: "Post 2", content: "To jest tresc driugiego posta." },
+        // Mozes dodac wiejec postow wrazie potrzeby
+    ]
 };
 
-// Display user profile information
+// Funkja do wyswietlenia informacji o profilu uzytkownika
 function displayProfile() {
     const profileElement = document.getElementById("profile");
     profileElement.innerHTML = `
-          <h2>${user.name}</h2>
+           <h2>${user.name}</h2>
           <p>@${user.username}</p>
       `;
 }
 
-// Display social media posts
+// Funkja do wyswietlenia postow uzytkownika na stronie
 function displayPosts() {
     const postsElement = document.getElementById("posts");
 
@@ -29,19 +29,19 @@ function displayPosts() {
         postElement.innerHTML = `
               <h2>${post.title}</h2>
               <p>${post.content}</p>
-          `;
+          `; 
 
         postsElement.appendChild(postElement);
     });
 }
 
-// Logout function (placeholder)
+// Funkja do wylogowania uzytkownika (placeholder)
 function logout() {
-    alert("User logged out.");
-    // Implement actual logout logic here
+    alert("Uzytkownik zostal wlogowany.");
+    // Tu mozna dodac rzeczywista logike wylogowania
 }
 
-// Initial function calls
+// Wywolanie twe ze Ynizialny funkji calls
 window.onload = function () {
     displayProfile();
     displayPosts();
