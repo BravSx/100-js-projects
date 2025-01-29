@@ -1,34 +1,32 @@
-console.log("Hello");
-
-let timer;
+let timer = null;
 let seconds = 0;
 
-function startTimer() {
-   if (!timer) {
-      timer = setInterval(updateTimer, 1000);
-   }
-}
+const timerElement = document.getElementById("timer");
 
-function stopTimer() {
-   clearInterval(timer);
-   timer = null;
-}
+const formatTime = (time) => String(time).padStart(2, "0");
 
-function resetTimer() {
-   stopTimer();
-   seconds = 0;
-   updateTimer();
-}
+const updateTimer = () => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
 
-function updateTimer() {
-   const hours = Math.floor(seconds / 3600);
-   const minutes = Math.floor((seconds % 3600) / 60);
-   const remainingSeconds = seconds % 60;
+    timerElement.textContent = `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(remainingSeconds)}`;
+    seconds++;
+};
 
-   const formattedTime = `${String(hours).padStart(2, "0")}:${String(
-      minutes
-   ).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+const startTimer = () => {
+    if (!timer) {
+        timer = setInterval(updateTimer, 1000);
+    }
+};
 
-   document.getElementById("timer").textContent = formattedTime;
-   seconds++;
-}
+const stopTimer = () => {
+    clearInterval(timer);
+    timer = null;
+};
+
+const resetTimer = () => {
+    stopTimer();
+    seconds = 0;
+    updateTimer();
+};
